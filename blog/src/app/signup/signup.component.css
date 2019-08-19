@@ -1,0 +1,28 @@
+ .wrapper
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.center
+{
+    max-width:500px;    
+    width:500px;  
+    background: white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 30px grey;
+} 
+
+
+.inp
+{
+    width:80%;
+    line-height:60px;
+    border:none;
+    outline:none;
+    background: rgba(202, 200, 198, 0.486);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-align:center;
+    color:rgb(148, 100, 100,29);
+}
