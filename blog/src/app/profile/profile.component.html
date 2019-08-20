@@ -1,0 +1,70 @@
+<div class="card">
+    <div class="card-header text-center h4">
+        {{user.username}}<br><br>
+        {{user.email}}
+    </div>
+</div>
+<br>
+<div class="container text-center">
+    <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#demo">Write a blog</button>
+
+
+    <div id="demo" class="collapse alert alert-secondary">
+
+        <textarea class="form-control" rows="1" placeholder="Title" name="t1" [(ngModel)]="t_var"></textarea>
+        <br>
+        <textarea class="form-control" rows="10" placeholder="Content" name="c1" [(ngModel)]="c_var"></textarea>
+        <br>
+        <button class="btn btn-danger" (click)="addPost()">Post</button>
+    </div>
+</div>
+
+<div class="container-fluid" style="margin:70px 0;">
+
+    <div class="text-center h3" style="margin-bottom:30px">My Posts</div>
+
+    <div *ngFor="let p of posts" class="container text-center">
+        <div *ngIf="p.author==user.username" class="card w-100 card1" style="width: 18rem;">
+
+            <div class="card-header">
+                <h5 class="card-title text-light">{{p.title}}
+                    <span style="float:right;font-size:12pt;cursor:pointer">
+                        <i class="far fa-edit" (click)="getCurPostContent(p.id)" data-toggle="modal"
+                            data-target="#myModal">
+                        </i>
+                    </span></h5>
+                <h6 class="card-subtitle mb-2 text-light">Posted by <b>{{p.author}}</b> on {{formatDate(p.date)}} at
+                    {{formatTime(p.time)}}</h6>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{p.content}} fgfdjgn fdjfhdjfjsdf sdfjhdsjfdsjf djhfdjfsdf fdjfsjdfjdsfsdfsdj
+                    jdhfjdfjd</p>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center alert alert-secondary">
+
+                    <textarea class="form-control" rows="1" placeholder="Title" name="t1"
+                        [(ngModel)]="t1_var"></textarea>
+                    <br>
+                    <textarea class="form-control" rows="10" placeholder="Content" name="c1"
+                        [(ngModel)]="c1_var"></textarea>
+                    <br>
+                    <button class="btn btn-danger" (click)="editPost()">Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

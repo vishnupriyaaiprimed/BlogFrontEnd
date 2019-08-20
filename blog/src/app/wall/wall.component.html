@@ -1,3 +1,13 @@
-<div *ngFor="let p of posts">
-{{p.title}}|{{p.time}}
+<div *ngFor="let p of posts" class="container text-center">
+
+    <div class="card w-75" style="width: 18rem;">
+        <div class="card-header">
+            <h5 class="card-title text-light">{{p.title}}<span *ngIf="p.author==user" style="float:right;font-size:12pt"><i class="far fa-edit"></i></span></h5>
+            <h6 class="card-subtitle mb-2 text-light">Posted by <b>{{p.author}}</b> on {{formatDate(p.date)}} at {{formatTime(p.time)}}</h6>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{p.content}}  fgfdjgn fdjfhdjfjsdf sdfjhdsjfdsjf djhfdjfsdf fdjfsjdfjdsfsdfsdj jdhfjdfjd</p>
+        </div>
+    </div>
+    
 </div>

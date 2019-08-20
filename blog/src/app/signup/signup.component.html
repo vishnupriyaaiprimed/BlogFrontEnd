@@ -1,9 +1,9 @@
 <div class="wrapper mx-auto">
     <div class="center text-center">
-    <input type="text" placeholder="Name" class="inp" />
-    <input type="text" placeholder="Email" class="inp" />
-    <input type="text" placeholder="Username" class="inp" />
-    <input type="password" placeholder="Password" class="inp" />
-    <input type="password" placeholder="Re-type Password" class="inp" />
-    <button class="btn btn-danger">Sign Up</button>
+    <input type="text" placeholder="Name" class="inp" name="n1" [(ngModel)]="n_var"/>
+    <input type="text" placeholder="Email" class="inp" name="e1" [(ngModel)]="e_var"/>
+    <input type="text" placeholder="Username" class="inp" name="u1" [(ngModel)]="u_var"/>
+    <input type="password" placeholder="Password" class="inp" name="pw1" [(ngModel)]="pw_var"/>
+    <input type="password" placeholder="Re-type Password" class="inp" name="rpw1" [(ngModel)]="rpw_var"/>
+    <button class="btn btn-danger" (click)="signup()">Sign Up</button>
 </div></div>

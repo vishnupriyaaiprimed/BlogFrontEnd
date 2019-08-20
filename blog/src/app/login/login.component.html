@@ -1,11 +1,10 @@
 <div class="bg">
 <div class="wrapper">
     <div class="center text-center">
-        <input type="text" placeholder="Username" class="inp" />
-        <input type="password" placeholder="Password" class="inp" />
-        <a routerLink="/wall"><button class="btn btn-danger">Login</button></a>
-        <br><br>
-        <a routerLink="/signup">Sign Up</a>
+        <input type="text" placeholder="Username" class="inp" name="u1" [(ngModel)]="u_var"/>
+        <input type="password" placeholder="Password" class="inp" name="p1" [(ngModel)]="p_var"/>
+        <a routerLink="/wall"><button class="btn btn-danger" (click)="login()">Login</button></a>
+        <br>
     </div>
 </div>
 </div>
