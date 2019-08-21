@@ -31,6 +31,7 @@ export class SignupComponent implements OnInit {
 
   check() {
     this.isBtnClicked = true;
+    this.success=false;
     console.log(this.regForm_frontend_val);
 
     if (this.regForm_frontend_val) {
