@@ -1,13 +1,106 @@
-<div *ngFor="let p of posts" class="container text-center">
+<div class="bg">
+    <div class="fg">
 
-    <div class="card w-75" style="width: 18rem;">
-        <div class="card-header">
-            <h5 class="card-title text-light">{{p.title}}<span *ngIf="p.author==user" style="float:right;font-size:12pt"><i class="far fa-edit"></i></span></h5>
-            <h6 class="card-subtitle mb-2 text-light">Posted by <b>{{p.author}}</b> on {{formatDate(p.date)}} at {{formatTime(p.time)}}</h6>
+        <span style="opacity:0">hi</span>
+
+        <div class="container text-center">
+            <button type="button" class="btn btn-danger btn1" data-toggle="collapse" data-target="#demo">Write a blog
+                <i class="fas fa-pencil-alt" style="font-size:12pt;background: none">
+                </i>
+            </button>
+
+
+            <div id="demo" class="collapse alert alert-secondary">
+
+                <textarea class="form-control" rows="1" placeholder="Title" name="t1" [(ngModel)]="t_var"></textarea>
+                <br>
+                <textarea class="form-control" rows="10" placeholder="Content" name="c1" [(ngModel)]="c_var"></textarea>
+                <br>
+                <button class="btn btn-danger" (click)="addPost()">Post</button>
+            </div>
         </div>
-        <div class="card-body">
-            <p class="card-text">{{p.content}}  fgfdjgn fdjfhdjfjsdf sdfjhdsjfdsjf djhfdjfsdf fdjfsjdfjdsfsdfsdj jdhfjdfjd</p>
+
+
+        <div class="container-fluid" style="margin:70px 0;">
+
+            <div class="container bg1" style="padding-bottom:40px;padding-top:2px">
+
+                <div *ngFor="let p of posts" class="container text-center">
+                    <div class="card w-100 card1" style="width: 18rem;">
+
+                        <div *ngIf="p.author==user.username" class="card-header">
+                            <h5 class="card-title text-light">{{p.title}}
+                                <span style="float:right;">
+                                    <i class="fas fa-pencil-alt" style="font-size:12pt;cursor:pointer"
+                                        (click)="getCurPostContent(p.id)" data-toggle="modal" data-target="#myModal">
+                                    </i>
+                                    <i class="fas fa-trash-alt" style="margin-left:15px;font-size:12pt;cursor:pointer"
+                                        (click)="curPost=p.id" data-toggle="modal" data-target="#myModal1"></i>
+                                </span>
+                            </h5>
+                            <h6 class="card-subtitle mb-2 text-light">Posted / Edited by <b>{{p.author}}</b> on
+                                {{formatDate(p.date)}} at
+                                {{formatTime(p.time)}}</h6>
+                        </div>
+
+                        <div *ngIf="p.author!=user.username" class="card-header">
+                            <h5 class="card-title text-light h51">{{p.title}}
+
+                            </h5>
+                            <h6 class="card-subtitle mb-2 text-light h61">Posted / Edited by <b>{{p.author}}</b> on
+                                {{formatDate(p.date)}} at
+                                {{formatTime(p.time)}}</h6>
+                        </div>
+
+                        <div class="card-body">
+                            <p class="card-text">{{p.content}}</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
         </div>
+
+
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="text-center alert alert-secondary">
+
+                            <textarea class="form-control" rows="1" placeholder="Title" name="t1"
+                                [(ngModel)]="t1_var"></textarea>
+                            <br>
+                            <textarea class="form-control" rows="10" placeholder="Content" name="c1"
+                                [(ngModel)]="c1_var"></textarea>
+                            <br>
+                            <button class="btn btn-danger" (click)="editPost()">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="myModal1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="text-center">
+
+                            <font size="4">Are you sure you want to delete this post ?</font><br><br>
+                            <button class="btn btn-danger" (click)="delPost()">
+                                Yes
+                            </button>
+                            <button class="btn btn-danger" style="margin-left:20px" (click)="no()">
+                                No
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    
 </div>

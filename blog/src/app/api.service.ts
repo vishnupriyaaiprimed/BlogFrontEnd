@@ -72,4 +72,10 @@ export class ApiService {
     {headers:this.httpHeaders}
     );
   }
+
+  delPost(id){
+    return this.http.delete(this.baseUrl+"posts/"+id+"/",
+    {headers:this.httpHeaders}
+    );
+  }
 }

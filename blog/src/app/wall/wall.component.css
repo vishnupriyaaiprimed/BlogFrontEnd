@@ -1,17 +1,50 @@
-.container
+.bg
 {
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    width:100%;
+    /* height:100%; */
+    margin:0;
+    padding: 0;
+    background-image: url('../../assets/images/room.jpg');
+    background-size: cover;
+    /* background-repeat: repeat-y; */
 }
 
-.card
+.fg
 {
-    margin:20px;
+    width:100%;
+    height:100%;
+    margin:0;
+    padding: 0;
+    background: rgba(128, 128, 128, 0.3);
+}
+
+.bg1
+{
+    background: rgba(252, 252, 252, 0.582);
+}
+
+.btn1
+{
+    width:100% !important;
+}
+
+.collapse
+{
+    padding:10px;
+}
+
+.btn-danger
+{
+    width:25%;
+}
+
+.card1
+{
+    margin-top:40px;
     box-shadow:0 0 20px 2px rgb(185, 185, 185);
 }
 
-.card-header
+.card1 .card-header
 {
     background:rgba(220, 53, 70, 0.884);
     /* color:white !important; */
@@ -20,4 +53,22 @@
 .card-subtitle
 {
     /* color:white !important; */
+}
+
+h5,h6{
+    margin-left: 80px;
+}
+
+.h51,.h61{
+    margin-left: 0px !important;
+}
+
+h6{
+    font-weight: normal;
+}
+
+i{
+    background: rgba(0, 0, 0, 0.26);
+    padding:10px;
+    border-radius:2px;
 }

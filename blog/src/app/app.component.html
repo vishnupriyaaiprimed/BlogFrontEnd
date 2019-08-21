@@ -1,29 +1,33 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Blog</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="/wall">All Posts</a>
-            </li>
-            <li class="nav-item">
-                    <a class="nav-link" href="/profile">My Profile</a>
-                  </li>
+  <a class="navbar-brand" href="#">Blog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li *ngIf="liveUser()" class="nav-item">
+        <a class="nav-link" href="/wall">All Posts</a>
+      </li>
+      <li *ngIf="liveUser()" class="nav-item">
+        <a class="nav-link" href="/profile">My Profile</a>
+      </li>
+      <li *ngIf="liveUser()" class="nav-item">
+        <a class="nav-link" href="" (click)="logout()">Logout</a>
+      </li>
 
-                  <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
-                      </li>
-                      <li class="nav-item">
-                            <a class="nav-link" href="/signup">Sign Up</a>
-                          </li>
-          </ul>
-        </div>
-      </nav>
+      <li *ngIf="!liveUser()" class="nav-item">
+        <a class="nav-link" href="#">Login</a>
+      </li>
+      <li *ngIf="!liveUser()" class="nav-item">
+        <a class="nav-link" href="/signup">Sign Up</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-      <div role="main" *ngIf="fn()" class="full">
-            <app-login></app-login>
-          </div>
+<div role="main" *ngIf="fn()" class="full">
+  <app-login></app-login>
+</div>
 
 <router-outlet></router-outlet>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  user:any;
 
-  constructor(private router:Router){}
+  constructor(private router:Router,
+    private api:ApiService){
+      this.user=this.api.getUser();
+    }
 
   title = 'blog';
 
@@ -18,6 +23,20 @@ export class AppComponent {
     return true;
     else
     return false;
+  }
+
+  liveUser()
+  {
+    this.user=this.api.getUser();
+    if(this.user=='')
+      return false;
+    else
+      return true;
+  }
+
+  logout()
+  {
+    this.api.changeUser('');
   }
 
 }

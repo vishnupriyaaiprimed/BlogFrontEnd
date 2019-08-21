@@ -1,9 +1,29 @@
+<div class="bg"><div class="fg">
+
 <div class="wrapper mx-auto">
     <div class="center text-center">
-    <input type="text" placeholder="Name" class="inp" name="n1" [(ngModel)]="n_var"/>
-    <input type="text" placeholder="Email" class="inp" name="e1" [(ngModel)]="e_var"/>
-    <input type="text" placeholder="Username" class="inp" name="u1" [(ngModel)]="u_var"/>
-    <input type="password" placeholder="Password" class="inp" name="pw1" [(ngModel)]="pw_var"/>
-    <input type="password" placeholder="Re-type Password" class="inp" name="rpw1" [(ngModel)]="rpw_var"/>
-    <button class="btn btn-danger" (click)="signup()">Sign Up</button>
+        <input type="text" placeholder="Name" class="inp" name="n1" [(ngModel)]="n_var" />
+        <input type="text" placeholder="Email" class="inp" name="e1" [(ngModel)]="e_var" />
+        <input type="text" placeholder="Username" class="inp" name="u1" [(ngModel)]="u_var" />
+        <input type="password" placeholder="Password" class="inp" name="pw1" [(ngModel)]="pw_var" />
+        <input type="password" placeholder="Re-type Password" class="inp" name="rpw1" [(ngModel)]="rpw_var" />
+        <button class="btn btn-danger" (click)="signup()">Sign Up</button>
+        <input id="here" type="hidden" data-toggle="modal" data-target="#myModal"/>
+    </div>
+</div>
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+
+                        <font size="4">Signed up successfully !</font><br><br>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div></div>

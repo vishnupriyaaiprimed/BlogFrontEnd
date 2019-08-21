@@ -62,6 +62,18 @@ export class ProfileComponent implements OnInit {
     
     
     this.api.editPost(this.curPost,this.t1_var,this.user.username,d,time,this.c1_var).subscribe(data=>(console.log(data),this.getPosts()));
+    location.reload();
+  }
+
+  delPost()
+  {
+    this.api.delPost(this.curPost).subscribe(data=>(console.log(data),this.getPosts()));
+    location.reload();
+  }
+
+  no()
+  {
+    location.reload();
   }
 
   formatDate(str) {
