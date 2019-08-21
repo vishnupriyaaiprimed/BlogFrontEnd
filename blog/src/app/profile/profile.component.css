@@ -68,3 +68,11 @@ i{
     padding:10px;
     border-radius:2px;
 }
+
+.hover1:hover .icon1{
+    opacity:20;
+}
+
+.icon1{
+    opacity:0;
+}

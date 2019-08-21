@@ -32,6 +32,13 @@ export class ApiService {
       );
   }
 
+  createProfile(id){
+    const details={user:id};
+    return this.http.post(this.baseUrl+"profiles/",details,
+      {headers:this.httpHeaders}
+      );
+  }
+
   login(u,p)
   {
     const details={username:u,password:p};
@@ -78,4 +85,25 @@ export class ApiService {
     {headers:this.httpHeaders}
     );
   }
+
+  getProfPic(id)
+  {
+    return this.http.get(this.baseUrl+"profiles/"+id+"/",
+    {headers:this.httpHeaders}
+    );
+  }
+
+  changeProfPic(id,file){
+    const fd=new FormData();
+    fd.append('image',file,file.name);
+    
+    return this.http.patch(this.baseUrl+"profiles/"+id+"/",fd);
+  }
+
+  // getImages()
+  // {
+  //   return this.http.get(this.baseUrl+"profiles/",
+  //   {headers:this.httpHeaders}
+  //   );
+  // }
 }

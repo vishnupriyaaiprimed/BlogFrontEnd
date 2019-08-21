@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   ];
 
   user:any;
+  image:any;
   posts:any;
 
   t_var:string;
@@ -25,7 +26,12 @@ export class ProfileComponent implements OnInit {
 
   constructor(private api:ApiService) { 
     this.getPosts();
-    this.api.getUserDetails(this.api.getUser()).subscribe(data=>(this.user=data));
+    this.api.getUserDetails(this.api.getUser()).subscribe(data=>(this.user=data,this.getProfPic()));
+  }
+
+  getProfPic()
+  {
+    this.api.getProfPic(this.user.id).subscribe(data=>(this.image=data,console.log(data)));
   }
 
   getPosts()
@@ -101,4 +107,29 @@ export class ProfileComponent implements OnInit {
     return res;
     
   }
+
+  editClicked()
+  {
+    var ele=document.getElementById('propic');
+    ele.click();
+  }
+
+  getFile()
+  {
+    var file=document.getElementById('propic').files[0];
+
+    this.api.changeProfPic(this.user.id,file).subscribe(data=>(console.log(data),location.reload()
+    ));    
+  }
+
+  // onFileSelected(event)
+  // {
+  //   this.selectedFile=event.target.files[0];
+  //   console.log(this.selectedFile);
+    
+  // }
+  // onUpload()
+  // {
+  //   this.api.changeProfPic(this.user.id,this.selectedFile).subscribe(data=>true);
+  // }
 }

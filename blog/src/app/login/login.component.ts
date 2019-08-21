@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   passCrct=true;
 
   constructor(private api:ApiService,
-    private router:Router) { }
+    private router:Router) {}
 
   ngOnInit() {
   }
@@ -31,10 +31,15 @@ export class LoginComponent implements OnInit {
   checkPass()
   {
     this.api.login(this.u_var,this.p_var).subscribe(
-      data=>(this.api.changeUser(this.u_var),this.router.navigate(['/wall'])),
+      data=>(this.api.changeUser(this.u_var),this.router.navigate(['/profile'])),
       error=>(this.passCrct=false)
       );
   }
+
+  // images:any;
+  // getImages(){
+  //   this.api.getImages().subscribe(data=>(this.images=data,console.log(data)));
+  // }
 
 }
 

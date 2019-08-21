@@ -4,7 +4,14 @@
 
         <div class="card">
             <div class="card-header text-center h4">
-                {{user.username}}<br><br>
+                <div class="hover1" style="display:inline-block;">
+                <img src="{{image.image}}" width="200px" style="border:10px solid rgba(220, 53, 70, 0.884);"/>
+                <i class="fas fa-pencil-alt icon1" style="position:absolute;float:right;font-size:12pt;background: none;cursor:pointer;" (click)="editClicked()">
+                    </i> 
+                </div>
+                <br><br>
+                {{user.username}}
+                <br><br>
                 {{user.email}}
             </div>
         </div>
@@ -49,7 +56,7 @@
                                 {{formatTime(p.time)}}</h6>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">{{p.content}}</p>
+                            <p class="card-text text-justify">{{p.content}}</p>
                         </div>
 
                     </div>
@@ -100,3 +107,5 @@
 
     </div>
 </div>
+
+<input id="propic" type="file" style="opacity:0" (change)="getFile()"/>

@@ -17,6 +17,8 @@ export class SignupComponent implements OnInit {
   success = false;
   e: any;
 
+  uid: any;
+
   isBtnClicked = false;
   regForm_frontend_val: boolean;
   userNameTaken: boolean;
@@ -30,10 +32,10 @@ export class SignupComponent implements OnInit {
   check() {
     this.isBtnClicked = true;
     console.log(this.regForm_frontend_val);
-    
+
     if (this.regForm_frontend_val) {
       this.api.getUserDetails(this.u_var).subscribe(
-        data => (this.userNameTaken = true,console.log('taken')),
+        data => (this.userNameTaken = true, console.log('taken')),
         error => (this.userNameTaken = false, this.signup())
       );
     }
@@ -43,11 +45,23 @@ export class SignupComponent implements OnInit {
     this.api.signup(this.n_var, this.e_var, this.u_var, this.pw_var).subscribe(
       data => {
         this.success = true;
+        this.api.getUserDetails(this.u_var).subscribe(
+          data => {
+            this.uid = data;
+            this.api.createProfile(this.uid.id).subscribe(data => (true));
+          }
+        );
       },
       error => {
         this.e = error;
         if (this.e.status == 500) {
           this.success = true;
+          this.api.getUserDetails(this.u_var).subscribe(
+            data => {
+              this.uid = data;
+              this.api.createProfile(this.uid.id).subscribe(data => (true));
+            }
+          );
         }
       });
   }
