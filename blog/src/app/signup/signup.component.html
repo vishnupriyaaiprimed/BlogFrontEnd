@@ -1,29 +1,115 @@
-<div class="bg"><div class="fg">
+<div class="bg">
+    <div class="fg">
 
-<div class="wrapper mx-auto">
-    <div class="center text-center">
-        <input type="text" placeholder="Name" class="inp" name="n1" [(ngModel)]="n_var" />
-        <input type="text" placeholder="Email" class="inp" name="e1" [(ngModel)]="e_var" />
-        <input type="text" placeholder="Username" class="inp" name="u1" [(ngModel)]="u_var" />
-        <input type="password" placeholder="Password" class="inp" name="pw1" [(ngModel)]="pw_var" />
-        <input type="password" placeholder="Re-type Password" class="inp" name="rpw1" [(ngModel)]="rpw_var" />
-        <button class="btn btn-danger" (click)="signup()">Sign Up</button>
-        <input id="here" type="hidden" data-toggle="modal" data-target="#myModal"/>
-    </div>
-</div>
+        <div class="wrapper mx-auto">
+            <div class="center text-center">
+                <input type="text" placeholder="Name" class="inp" name="n1" [(ngModel)]="n_var" #name="ngModel"
+                    required />
 
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="text-center">
+                <div *ngIf="name.invalid && (name.dirty || name.touched || isBtnClicked)" class="text-danger">
 
-                        <font size="4">Signed up successfully !</font><br><br>
-                        
+                    <div *ngIf="name.errors.required">
+                        Name is required
+                    </div>
+
+                </div>
+                <div *ngIf="!name_match(n_var)" class="text-danger">
+                    Name can contain only alphabets
+                </div>
+
+                <input type="text" placeholder="Email" class="inp" name="e1" [(ngModel)]="e_var" #email="ngModel"
+                    required />
+
+                <div *ngIf="email.invalid && (email.dirty || email.touched || isBtnClicked)" class="text-danger">
+
+                    <div *ngIf="email.errors.required">
+                        Email is required
+                    </div>
+
+                </div>
+                <div *ngIf="(email.touched || isBtnClicked) && !email_match(e_var)" class="text-danger">
+                    Enter a valid email address
+                </div>
+
+                <input type="text" placeholder="Username" class="inp" name="u1" [(ngModel)]="u_var" #user_name="ngModel"
+                    required />
+
+                <div *ngIf="user_name.invalid && (user_name.dirty || user_name.touched || isBtnClicked)"
+                    class="text-danger">
+
+                    <div *ngIf="user_name.errors.required">
+                        Username is required
+                    </div>
+
+                </div>
+                <div *ngIf="!user_name_start(u_var)" class="text-danger">
+                    Username should start with an alphabet
+                </div>
+                <div *ngIf="!user_name_space(u_var)" class="text-danger">
+                    Username cannot contain space
+                </div>
+                <div *ngIf="!user_name_match(u_var)" class="text-danger">
+                    Username can contain only alphabets, numbers and a few special characters (#,*,_,-)
+                </div>
+
+
+                <input type="password" placeholder="Password" class="inp" name="pw1" [(ngModel)]="pw_var" #pw="ngModel"
+                    required />
+
+                <div *ngIf="pw.invalid && (pw.dirty || pw.touched || isBtnClicked)" class="text-danger">
+
+                    <div *ngIf="pw.errors.required">
+                        Password is required
+                    </div>
+
+                </div>
+                <div *ngIf="(pw.touched || isBtnClicked) && !pw_match(pw_var)" class="text-danger">
+                    Password should contains at least 8 characters and it can be alphabets and numbers
+                </div>
+
+
+                <input type="password" placeholder="Re-type Password" class="inp" name="rpw1" [(ngModel)]="rpw_var"
+                    #retype_pw="ngModel" />
+
+                <div *ngIf="(retype_pw.touched || isBtnClicked) && pw_var!=null && pw_var!='' && pw_var!=rpw_var"
+                    class="text-danger">
+                    Re-typed password does not match Password
+                </div>
+
+                <button class="btn btn-danger" (click)="check()" data-toggle="modal" data-target="#myModal">Sign
+                    Up</button>
+
+            </div>
+        </div>
+
+        <div *ngIf="frontend_valid()"></div>
+
+        <div *ngIf="regForm_frontend_val" class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+
+                        <div *ngIf="success" class="text-center">
+                            <font size="4">Signed up successfully !</font><br><br>
+                            <a routerLink="/login">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                    OK
+                                </button>
+                            </a>
+                        </div>
+
+                        <div *ngIf="userNameTaken" class="text-center">
+                            <div class="alert alert-danger">
+                            <font size="4">This username is already taken<br>Please try another one</font></div>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                OK
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</div></div>
+    </div>
+</div>

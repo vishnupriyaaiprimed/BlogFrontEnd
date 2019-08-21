@@ -1,10 +1,16 @@
 <div class="bg">
-<div class="wrapper">
-    <div class="center text-center">
-        <input type="text" placeholder="Username" class="inp" name="u1" [(ngModel)]="u_var"/>
-        <input type="password" placeholder="Password" class="inp" name="p1" [(ngModel)]="p_var"/>
-        <button class="btn btn-danger" (click)="login()">Login</button>
-        <br>
+    <div class="wrapper">
+        <div class="center text-center">
+            <input type="text" placeholder="Username" class="inp" name="u1" [(ngModel)]="u_var" />
+            <input type="password" placeholder="Password" class="inp" name="p1" [(ngModel)]="p_var" />
+            <button class="btn btn-danger" (click)="login()">Login</button>
+            <div *ngIf="!isUser" class="alert alert-danger" style="margin:0 20px;">
+                Check your username
+            </div>
+            <div *ngIf="isUser && !passCrct" class="alert alert-danger" style="margin:0 20px;">
+                Password is wrong
+            </div>
+            <br>
+        </div>
     </div>
-</div>
 </div>
