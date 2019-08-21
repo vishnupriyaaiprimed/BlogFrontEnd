@@ -1,4 +1,4 @@
-<div class="bg">
+<div *ngIf="user!=null" class="bg">
     <div class="fg">
 
         <span style="opacity:0">hi</span>
@@ -103,4 +103,8 @@
         </div>
 
     </div>
+</div>
+
+<div *ngIf="user==null" class="text-center">
+<font size="12">Please login to view this page</font>
 </div>

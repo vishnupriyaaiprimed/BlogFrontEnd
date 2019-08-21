@@ -1,13 +1,16 @@
-<div class="bg">
+<div *ngIf="user!=null" class="bg">
     <div class="fg">
 
 
         <div class="card">
             <div class="card-header text-center h4">
                 <div class="hover1" style="display:inline-block;">
-                <img src="{{image.image}}" width="200px" style="border:5px solid rgba(220, 53, 70, 0.733);box-shadow:0 0 30px 3px grey;"/>
-                <i class="fas fa-pencil-alt icon1" style="position:absolute;float:right;font-size:12pt;background: none;cursor:pointer;" (click)="editClicked()">
-                    </i> 
+                    <img src="{{image.image}}" width="200px"
+                        style="border:5px solid rgba(220, 53, 70, 0.733);box-shadow:0 0 30px 3px grey;" />
+                    <i class="fas fa-pencil-alt icon1"
+                        style="position:absolute;float:right;font-size:12pt;background: none;cursor:pointer;"
+                        (click)="editClicked()">
+                    </i>
                 </div>
                 <br><br>
                 {{user.username}}
@@ -108,4 +111,8 @@
     </div>
 </div>
 
-<input id="propic" type="file" style="opacity:0" (change)="getFile()"/>
+<div *ngIf="user==null" class="text-center">
+    <font size="12">Please login to view this page</font>
+</div>
+
+<input id="propic" type="file" style="opacity:0" (change)="getFile()" />
